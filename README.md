@@ -35,8 +35,4 @@ $ stow .
 
 tmux shortcuts
 
-
-echo "alias tmuxR='~/.tmux/tmuxR" >> ~/.zshrc
-echo "alias tmuxS='~/.tmux/tmuxS" >> ~/.zshrc
-
 source ~/.zshrc
