@@ -29,7 +29,11 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      --"mlaursen/vim-react-snippets",
+    },
   },
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
@@ -161,7 +165,7 @@ require('lazy').setup({
     requires = 'nvim-tree/nvim-web-devicons',
     opts = {
       options = {
-        buffer_close_icon = "窱"
+        buffer_close_icon = "x"
       }
     }
   },

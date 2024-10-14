@@ -89,7 +89,8 @@ else
       hl["@punctuation.bracket"] = { fg = c.magenta } -- For brackets and parens.
     end
   })
-  vim.cmd[[colorscheme tokyonight-night]]
+  --vim.cmd[[colorscheme tokyonight-night]]
+  vim.cmd[[colorscheme gruvbox]]
   vim.cmd[[
     highlight RainbowDelimiterRed  guifg=#f4ca0d ctermfg=White
     highlight RainbowDelimiterYellow guifg=#9d7cd8 ctermfg=White
@@ -104,4 +105,4 @@ else
   -- vim.cmd("autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=##16161E")
   vim.wo.relativenumber = true
 end
-   
+--require("vim-react-snippets").lazy_load()   

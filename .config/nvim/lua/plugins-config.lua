@@ -508,14 +508,14 @@ bufferline.setup({
     show_buffer_close_icons = true,
     color_icons = true,
     indicator = {
-      icon = " 喇",
+      icon = " ➜",
       style = "icon"
     },
     close_icon = '',
     diagnostics = "nvim_lsp",
     -- separator_style =  "slant" ,
     show_tab_indicators = true,
-    buffer_close_icon = "窱",
+    buffer_close_icon = '',
     diagnostics_indicator = function(count, level)
       local icon = level:match("error") and " " or ""
       return " " .. icon .. count
