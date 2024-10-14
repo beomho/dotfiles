@@ -301,7 +301,8 @@ local options = {
     custom = { ".DS_Store" },
   },
   view = {
-    adaptive_size = false,
+    --adaptive_size = false,
+    adaptive_size = true,
     side = "left",
     width = 25,
     -- hide_root_folder = true,
