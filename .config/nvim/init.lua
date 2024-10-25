@@ -58,8 +58,10 @@ else
       variables = {},
       operators = { bold = true },
       booleans = { bold = true },
-      sidebars = "dark",
-      floats = "dark",
+      --sidebars = "dark",
+      --floats = "dark",
+      sidebars = "transparent",
+      floats = "transparent",
     },
     on_highlights = function(hl, c)
       hl.CursorLine = { bg = c.bg_highlight }
@@ -89,8 +91,8 @@ else
       hl["@punctuation.bracket"] = { fg = c.magenta } -- For brackets and parens.
     end
   })
-  --vim.cmd[[colorscheme tokyonight-night]]
   vim.cmd[[colorscheme gruvbox]]
+  vim.cmd[[colorscheme tokyonight-night]]
   vim.cmd[[
     highlight RainbowDelimiterRed  guifg=#f4ca0d ctermfg=White
     highlight RainbowDelimiterYellow guifg=#9d7cd8 ctermfg=White

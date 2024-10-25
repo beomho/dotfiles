@@ -260,8 +260,8 @@ local function on_attach(bufnr)
   vim.keymap.del('n', '<2-RightMouse>', { buffer = bufnr })
   vim.keymap.set('n', 'D', '', { buffer = bufnr })
   vim.keymap.del('n', 'D', { buffer = bufnr })
-  vim.keymap.set('n', 'E', '', { buffer = bufnr })
-  vim.keymap.del('n', 'E', { buffer = bufnr })
+  --vim.keymap.set('n', 'E', '', { buffer = bufnr })
+  --vim.keymap.del('n', 'E', { buffer = bufnr })
 
 
   -- Mappings migrated from view.mappings.list
@@ -290,7 +290,7 @@ local options = {
   hijack_netrw = true,
   hijack_cursor = true,
 
-  -- transparent_panel = true,
+  --transparent_panel = true,
   hijack_unnamed_buffer_when_opening = false,
   sync_root_with_cwd = true,
   update_focused_file = {

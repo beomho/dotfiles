@@ -117,4 +117,5 @@ vim.cmd [[
   "HTML
   autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab autoindent
   autocmd FileType rust setlocal tabstop=2 shiftwidth=2 expandtab autoindent
+  autocmd FileType java setlocal tabstop=2 shiftwidth=2 expandtab autoindent
 ]]

@@ -13,6 +13,7 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -269,6 +270,11 @@ require('lazy').setup({
         },
       }
     },
+  },
+  {
+    'tribela/transparent.nvim',
+    event = 'VimEnter',
+    config = true,
   }
 
 

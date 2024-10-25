@@ -47,7 +47,7 @@ else
     tmux send-keys -t 2 'clear' C-m
 
 
-    tmux send-keys -t 0 'nvim' C-m
+    tmux send-keys -t 0 'nvim .' C-m
     tmux send-keys -t 0 ENTER
 
     tmux send-keys -t 1 './gradlew build --continuous --parallel --build-cache --configuration-cache' C-m

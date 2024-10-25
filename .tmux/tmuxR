@@ -41,7 +41,7 @@ else
     tmux send-keys -t 1 'clear' C-m
 
 
-    tmux send-keys -t 0 'nvim' C-m
+    tmux send-keys -t 0 'nvim .' C-m
     tmux send-keys -t 0 ENTER
 
     tmux send-keys -t 1 'npm run dev' C-m

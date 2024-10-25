@@ -88,7 +88,7 @@ require("telescope").load_extension("lazygit")
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  -- ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim', 'bash', 'javascript', 'kotlin' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = true,
@@ -246,6 +246,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  kotlin_language_server = {},
 }
 
 -- Setup neovim lua configuration
@@ -258,6 +259,26 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Setup mason so it can manage external tooling
 require('mason').setup()
 
+-- You can add other tools here that you want Mason to install
+-- for you, so that they are available from within Neovim.
+local ensure_installed = vim.tbl_keys(servers or {})
+vim.list_extend(ensure_installed, {
+  'stylua', -- Used to format Lua code
+})
+require('mason-tool-installer').setup { ensure_installed = {"kotlin",} }
+
+require('mason-lspconfig').setup {
+  handlers = {
+    function(server_name)
+      local server = servers[server_name] or {}
+      -- This handles overriding only values explicitly passed
+      -- by the server configuration above. Useful when disabling
+      -- certain features of an LSP (for example, turning off formatting for ts_ls)
+      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      require('lspconfig')[server_name].setup(server)
+    end,
+  },
+}
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -357,7 +378,8 @@ cmp.setup.cmdline(':', {
 
 
 require 'lspconfig'.volar.setup {
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' , 'kotlin'},
+  --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
   on_attach = on_attach,
   capabilities = capabilities
 }
@@ -610,17 +632,24 @@ require('illuminate').configure({
 
 vim.cmd("hi def IlluminatedWordText gui=underline")
 
+ -- Optional, you don't have to run setup.
 require("transparent").setup({
-  groups = { -- table: default groups
+  -- table: default groups
+  groups = {
     'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-    'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'CursorLine', 'Telescope',
+    'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+    'EndOfBuffer',
   },
-  extra_groups = {},   -- table: additional groups that should be cleared
-  exclude_groups = {}, -- table: groups you don't want to clear
+  -- table: additional groups that should be cleared
+  extra_groups = {},
+  -- table: groups you don't want to clear
+  exclude_groups = {},
+  -- function: code to be executed after highlight groups are cleared
+  -- Also the user event "TransparentClear" will be triggered
+  on_clear = function() end,
 })
-
 --
 local null_ls = require("null-ls")
 
@@ -667,3 +696,4 @@ lspconfig.rust_analyzer.setup({
 require('java').setup()
 
 require('lspconfig').jdtls.setup({})
+require('transparent').clear_prefix('lualine')
