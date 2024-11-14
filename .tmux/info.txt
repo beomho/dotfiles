@@ -1,0 +1,18 @@
+
+
+CPU temperature, voltage, fan speed sensors. Using the command-line
+
+sudo dnf install lm-sensors
+watch -n 1 sensors
+
+sudo cpupower -c 3 frequency-info
+
+#To set the maximum clock frequency
+sudo cpupower frequency-set -u 2000MHz
+
+
+#To set the minimum clock frequency
+sudo cpupower frequency-set -d 800MHz
+
+#To set the CPU to run at a specified frequency
+sudo cpupower frequency-set -f 2000MHz
