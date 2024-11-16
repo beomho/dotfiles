@@ -14,8 +14,18 @@ else
     # Split the window horizontally
     tmux split-window -v
     
+    #tmux resize-pane -D 
+
+    tmux swap-pane -D
+    tmux swap-pane -D
+
+
+    tmux split-window -h
+
+   
     tmux send-keys -t 0 'htop' C-m
     tmux send-keys -t 1 'watch -n 1 sensors' C-m
+    tmux send-keys -t 2 'watch -n 1 cpupower -c 3 frequency-info' C-m
 
     # Attach to the created session
     tmux attach-session -t $SESSION_NAME
