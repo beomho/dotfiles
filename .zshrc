@@ -114,8 +114,17 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:/bin/java::")
 
 alias tmuxR='~/.tmux/tmuxR'
 alias tmuxS='~/.tmux/tmuxS'
+alias info='~/.tmux/info'
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export PATH="$PATH:/home/b/development/flutter/bin"
+
+
+export ANDROID_HOME=~/Android/Sdk
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools/:$PATH
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin/:$PATH
